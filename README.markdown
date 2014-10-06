@@ -32,7 +32,16 @@ echo $filelist
 ok
 ```
 
-Will generate this log:
+Will generate this output...
+
+```
+grep grep grep failed, your K.O.
+cat not found
+README.markdown bashlog.sh bashlog.test.log bashlog.test.sh
+
+```
+
+...and this log...
 
 
 ```
