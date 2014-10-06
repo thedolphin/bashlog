@@ -1,8 +1,6 @@
-This is log processing full of bachism
-Useful for automating, cron jobs etc
-Took hours of my life away
+This is log processing full of bachisms. Useful for automating, cron jobs etc. Took hours of my life away.
 
-Just look. This script
+Just look. This script:
 
 ```bash
 #!/bin/sh
@@ -16,7 +14,7 @@ createlog "./bashlog.test.log"
 runcommand ls ||
     fail "will never fail"
 
-# This will stderr to pretty log
+# This will send stdout and stderr to pretty log
 runcommand grep grep grep ||
     echo "grep grep grep failed, your K.O."
 
