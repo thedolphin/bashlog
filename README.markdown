@@ -18,6 +18,12 @@ runcommand ls ||
 runcommand grep grep grep ||
     echo "grep grep grep failed, your K.O."
 
+# Multiline output from other sources we'll put to log, line by line
+fortune | logwrapper
+
+# Ok, just say something
+log "Nobody will ever look for logs"
+
 # Catch stdout and return code, send stderr to pretty log
 filelist=$(evalcommand ls /whereismycat) ||
     echo "cat not found"
@@ -45,16 +51,21 @@ README.markdown bashlog.sh bashlog.test.log bashlog.test.sh
 
 
 ```
-[2014-10-06 16:49:06] ++ ls
-[2014-10-06 16:49:06] bashlog.sh
-[2014-10-06 16:49:06] bashlog.test.log
-[2014-10-06 16:49:06] bashlog.test.sh
-[2014-10-06 16:49:06] ++ grep grep grep
-[2014-10-06 16:49:06] grep: grep: No such file or directory
-[2014-10-06 16:49:06] +++ ls /whereismycat
-[2014-10-06 16:49:06] ls: /whereismycat: No such file or directory
-[2014-10-06 16:49:06] +++ ls
-[2014-10-06 16:49:06] Done
+[2014-10-06 17:31:04] ++ ls
+[2014-10-06 17:31:04] README.markdown
+[2014-10-06 17:31:04] bashlog.sh
+[2014-10-06 17:31:04] bashlog.test.log
+[2014-10-06 17:31:04] bashlog.test.sh
+[2014-10-06 17:31:04] ++ grep grep grep
+[2014-10-06 17:31:04] grep: grep: No such file or directory
+[2014-10-06 17:31:04] +++ ls /whereismycat
+[2014-10-06 17:31:04] ls: /whereismycat: No such file or directory
+[2014-10-06 17:31:04] If we can ever make red tape nutritional, we can feed the world.
+[2014-10-06 17:31:04] -- R. Schaeberle, "Management Accounting"
+[2014-10-06 17:31:04] Nobody will ever look for logs
+[2014-10-06 17:31:04] +++ ls
+[2014-10-06 17:31:04] Done
+
 ```
 
 Like it? Use it!
