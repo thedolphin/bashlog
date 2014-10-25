@@ -44,6 +44,30 @@ evalcommand() {
     return ${ret}
 }
 
+waitforport() {
+    port=$1
+    host=${2:-127.0.0.1}
+    ttl=${3:-10}
+
+    while [ $((ttl--)) -gt 0 ]; do
+        :>/dev/tcp/${host}/${port} && return 0
+        sleep 1
+    done
+    return 1
+}
+
+waitwhileport() {
+    port=$1
+    host=${2:-127.0.0.1}
+    ttl=${3:-10}
+
+    while [ $((ttl--)) -gt 0 ]; do
+        :>/dev/tcp/${host}/${port} || return 0
+        sleep 1
+    done
+    return 1
+}
+
 ok() {
     log "Done"
     exit 0
@@ -51,7 +75,7 @@ ok() {
 
 fail() {
     log "Failed: $1"
-    exit $2
+    exit ${2:-1}
 }
 
 logfail() {
